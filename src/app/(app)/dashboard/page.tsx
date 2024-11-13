@@ -16,7 +16,7 @@ import { useSession } from 'next-auth/react'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-const page = () => {
+const Page = () => {
   const [messages, setMessages] = useState<Message[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [isSwitchLoading, setIsSwitchLoading] = useState(false)
@@ -52,7 +52,7 @@ const page = () => {
   } finally {
     setIsSwitchLoading(false)
   }
-  }, [setValue])
+  }, [setValue, toast])
 
   const fetchMessages = useCallback(async (refresh: boolean = false) => {
     setIsLoading(true)
@@ -77,7 +77,7 @@ const page = () => {
     setIsLoading(false)
     setIsSwitchLoading(false)
   }
-  }, [setIsLoading, setMessages])
+  }, [setIsLoading, setMessages, toast])
 
   useEffect(() => {
     if (!session || !session.user) return
@@ -165,9 +165,9 @@ const page = () => {
     </Button>
     <div className='mt-4 grid grid-cols-1 md:grid-cols-2 gap-6'>
       {messages.length > 0 ? (
-        messages.map((message, index) => (
+        messages.map((message) => (
           <MessageCard
-            key={message._id as any}
+            key={message._id as string}
             message={message}
             onMessageDelete={handleDeleteMessage}
             />
@@ -180,4 +180,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

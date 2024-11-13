@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export const runtime = "edge";
 
-export async function POST(request: Request) {
+export async function POST() {
     try {
         const randomWords = ["mystery", "wonder", "imagine", "surprise", "explore", "adventure", "travel", "", "fun", "food", "funny", "thought-provoking", "engaging", "lighthearted", "creative", "health", "love", "art", "travel", "adventure", "food", "fun", "funny", "thought-provoking", "engaging", "lighthearted", "creative", "health", "love", "art"];
         const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];

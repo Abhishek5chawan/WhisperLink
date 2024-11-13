@@ -4,24 +4,19 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import Link from "next/link";
-import { useDebounceValue, useDebounceCallback } from 'usehooks-ts'
-import React, { use, useState } from 'react'
 import { useToast } from "@/hooks/use-toast"
-import { redirect, useRouter } from "next/navigation"
-import { signUpSchema } from "@/schemas/signUpSchema";
-import { useEffect } from "react";
-import axios, { AxiosError } from 'axios'
-import { ApiResponse } from "@/types/ApiResponse";
+import {  useRouter } from "next/navigation"
+
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { Loader2 } from "lucide-react";
+
 import { signInSchema } from "@/schemas/signInSchema";
-import { password } from "bun";
+
 import { signIn } from "next-auth/react";
 
-const page = () => {
+const Page = () => {
 
 
 
@@ -120,4 +115,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

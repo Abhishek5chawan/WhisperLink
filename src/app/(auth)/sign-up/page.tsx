@@ -4,8 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import Link from "next/link";
-import { useDebounceValue, useDebounceCallback } from 'usehooks-ts'
-import React, { use, useState } from 'react'
+import {  useDebounceCallback } from 'usehooks-ts'
+import React, { useState } from 'react'
 import { useToast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
 import { signUpSchema } from "@/schemas/signUpSchema";
@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import {Form} from "@/components/ui/form";
 import { Loader2 } from "lucide-react";
 
-const page = () => {
+const Page = () => {
     const [username, setUsername] = useState('')
     const [usernameMessage, setUsernameMessage] = useState('')
     const [isCheckingUsername, setIsCheckingUsername] = useState(false)
@@ -69,7 +69,7 @@ const page = () => {
         } catch (error) {
             console.error("error signing up: ", error);
             const axiosError = error as AxiosError<ApiResponse>
-            let errorMessage = axiosError.response?.data.message ?? "Error signing up"
+            const errorMessage = axiosError.response?.data.message ?? "Error signing up"
             toast({
                 title: "Signup failed",
                 description: errorMessage,
@@ -157,4 +157,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
