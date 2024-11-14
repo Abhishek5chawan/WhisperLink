@@ -20,7 +20,7 @@ export async function POST(request: Request) {
         if(isCodeValid && isCodeExpired) {
             user.isVerified = true;
             await user.save();
-            return Response.json({ success: true, message: "user verified successfully" }, { status: 200 }); 
+            return Response.json({ success: true, message: "user verified successfully now click on log-in button to dive into the app" }, { status: 200 }); 
         } else if(!isCodeExpired) {
             return Response.json({ success: false, message: "Code expired please sign up again" }, { status: 400 });
         } else {
