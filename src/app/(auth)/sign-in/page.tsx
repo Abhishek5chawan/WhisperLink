@@ -1,11 +1,11 @@
 'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import Link from "next/link";
-import { useToast } from "@/hooks/use-toast"
-import {  useRouter } from "next/navigation"
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -16,12 +16,8 @@ import { signInSchema } from "@/schemas/signInSchema";
 import { signIn } from "next-auth/react";
 
 const Page = () => {
-
-
-
-
-  const { toast } = useToast()
-  const router = useRouter()
+  const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -29,15 +25,14 @@ const Page = () => {
       identifier: '',
       password: '',
     }
-  })
-
+  });
 
   const onSubmit = async (data: z.infer<typeof signInSchema>) => {
     const result = await signIn('credentials', {
       redirect: false,
       identifier: data.identifier,
       password: data.password
-    })
+    });
 
     if (result?.error) {
       if (result.error === 'CredentialsSignin') {
@@ -45,20 +40,19 @@ const Page = () => {
           title: "Login failed",
           description: "Invalid credentials",
           variant: "destructive",
-        })
+        });
       } else {
         toast({
           title: "Error",
           description: result.error,
           variant: "destructive",
-        })
+        });
       }
-
-      if (result?.url) {
-        router.replace('/dashboard')
-      }
+    } else if (result?.ok) {
+      // Successfully logged in, redirect to the dashboard
+      router.replace('/dashboard');
     }
-  }
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -111,7 +105,7 @@ const Page = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
