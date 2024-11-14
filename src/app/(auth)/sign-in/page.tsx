@@ -50,7 +50,7 @@ const Page = () => {
       }
     } else if (result?.ok) {
       // Successfully logged in, redirect to the dashboard
-      router.replace('/dashboard');
+      router.push('/dashboard');
     }
   };
 
