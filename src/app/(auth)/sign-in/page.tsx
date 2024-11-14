@@ -6,7 +6,6 @@ import { z } from "zod"
 import Link from "next/link";
 import { useToast } from "@/hooks/use-toast"
 import {  useRouter } from "next/navigation"
-
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -98,15 +97,15 @@ const Page = () => {
               )}
             />
             <Button type="submit">
-              Signin
+              Login
             </Button>
           </form>
         </Form>
         <div className="text-center mt-4">
           <p>
-            Already a member?{' '}
-            <Link href="/sign-in" className="text-blue-500 hover:text-blue-800">
-              Sign In
+            New to Mystery Message? Register{' '}
+            <Link href="/sign-up" className="text-blue-500 hover:text-blue-800">
+              Sign Up
             </Link>
           </p>
         </div>
