@@ -35,43 +35,37 @@ const Page = () => {
     });
 
     if (result?.error) {
-      if (result.error === 'CredentialsSignin') {
-        toast({
-          title: "Login failed",
-          description: "Invalid credentials",
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: result.error,
-          variant: "destructive",
-        });
-      }
+      toast({
+        title: "Login failed",
+        description: "Invalid credentials",
+        variant: "destructive",
+      });
     } else if (result?.ok) {
-      // Successfully logged in, redirect to the dashboard
       router.push('/dashboard');
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-purple-400 to-indigo-600">
+      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
         <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">Join Mystery Message</h1>
-          <p className="mb-4">Sign in to start your anonymous adventure</p>
+          <h1 className="text-5xl font-bold tracking-tight text-indigo-600">Mystery Message</h1>
+          <p className="mt-2 text-gray-500">Sign in to start your anonymous adventure</p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-
             <FormField
               control={form.control}
               name="identifier"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email/Username</FormLabel>
+                  <FormLabel className="text-gray-600">Email/Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="email/username" {...field} />
+                    <Input
+                      placeholder="Enter email or username"
+                      {...field}
+                      className="border border-gray-300 rounded-lg focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -82,23 +76,31 @@ const Page = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className="text-gray-600">Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="password" {...field} />
+                    <Input
+                      type="password"
+                      placeholder="Enter password"
+                      {...field}
+                      className="border border-gray-300 rounded-lg focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">
+            <Button
+              type="submit"
+              className="w-full py-3 mt-4 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-300 shadow-md"
+            >
               Login
             </Button>
           </form>
         </Form>
-        <div className="text-center mt-4">
-          <p>
-            New to Mystery Message? Register{' '}
-            <Link href="/sign-up" className="text-blue-500 hover:text-blue-800">
+        <div className="text-center mt-6">
+          <p className="text-gray-500">
+            New to Mystery Message?{' '}
+            <Link href="/sign-up" className="text-indigo-600 hover:underline">
               Sign Up
             </Link>
           </p>
