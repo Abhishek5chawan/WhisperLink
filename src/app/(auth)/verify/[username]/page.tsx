@@ -3,7 +3,7 @@ import { useToast } from '@/hooks/use-toast';
 import { verifySchema } from '@/schemas/verifySchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import axios, { AxiosError } from 'axios';
@@ -19,7 +19,12 @@ const VerifyAccount = () => {
 
     const form = useForm<z.infer<typeof verifySchema>>({
         resolver: zodResolver(verifySchema),
+        defaultValues: {
+            code: '', // Set default value for the code field
+        },
     });
+
+    const [isVerified, setIsVerified] = useState(false); // State to track verification status
 
     const onSubmit = async (data: z.infer<typeof verifySchema>) => {
         try {
@@ -33,7 +38,7 @@ const VerifyAccount = () => {
                 description: response.data.message,
             });
 
-            router.replace('sign-in');
+            setIsVerified(true); // Set to true after successful verification
         } catch (error) {
             const axiosError = error as AxiosError<ApiResponse>;
             toast({
@@ -44,6 +49,10 @@ const VerifyAccount = () => {
         }
     };
 
+    const handleLoginRedirect = () => {
+        router.push('/sign-in');
+    };
+
     return (
         <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-purple-400 to-indigo-600">
             <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105">
@@ -51,33 +60,47 @@ const VerifyAccount = () => {
                     <h1 className="text-5xl font-bold tracking-tight text-indigo-600">Verify Your Account</h1>
                     <p className="mt-2 text-gray-500">Enter the verification code sent to your email</p>
                 </div>
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                        <FormField
-                            control={form.control}
-                            name="code"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="text-gray-600">Verification Code</FormLabel>
-                                    <FormControl>
-                                        <Input 
-                                            placeholder="Enter code" 
-                                            {...field} 
-                                            className="border border-gray-300 rounded-lg focus:border-indigo-500 focus:ring focus:ring-indigo-200"
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+
+                {/* Show form if not verified, else show login button */}
+                {!isVerified ? (
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                            <FormField
+                                control={form.control}
+                                name="code"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-gray-600">Verification Code</FormLabel>
+                                        <FormControl>
+                                            <Input 
+                                                placeholder="Enter code" 
+                                                {...field} 
+                                                className="border border-gray-300 rounded-lg focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <Button 
+                                type="submit" 
+                                className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-300 shadow-md"
+                            >
+                                Submit
+                            </Button>
+                        </form>
+                    </Form>
+                ) : (
+                    <div className="flex flex-col items-center space-y-4">
+                        <h2 className="text-2xl text-green-500 font-semibold">Account Verified!</h2>
                         <Button 
-                            type="submit" 
+                            onClick={handleLoginRedirect} 
                             className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-300 shadow-md"
                         >
-                            Submit
+                            Go to Login
                         </Button>
-                    </form>
-                </Form>
+                    </div>
+                )}
             </div>
         </div>
     );
