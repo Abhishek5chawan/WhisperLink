@@ -7,8 +7,8 @@ import { Message } from '@/model/User.model'
 import { acceptMessageSchema } from '@/schemas/acceptMessageSchema'
 import { ApiResponse } from '@/types/ApiResponse'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Separator } from '@radix-ui/react-separator'
-import { Switch } from '@radix-ui/react-switch'
+import { Separator } from "@/components/ui/separator"
+import { Switch } from '@/components/ui/switch'
 import axios, { AxiosError } from 'axios'
 import { Loader2, RefreshCcw } from 'lucide-react'
 import { User } from 'next-auth'
@@ -144,10 +144,12 @@ const Page = () => {
       </div>
       <div className='mb-4'>
         <Switch
+            
             {...register('acceptMessages')}
             checked={acceptMessages}
             onCheckedChange={handleSwitchChange}
             disabled={isSwitchLoading}
+
           />
           <span className='ml-2'>
             Accept Messages: {acceptMessages ? 'On' : 'Off'}
