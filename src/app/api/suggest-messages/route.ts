@@ -6,7 +6,7 @@ export async function POST() {
     try {
         const randomWords = ["mystery", "wonder", "imagine", "surprise", "explore", "adventure", "travel", "", "fun", "food", "funny", "thought-provoking", "engaging", "lighthearted", "creative", "health", "love", "art", "travel", "adventure", "food", "fun", "funny", "thought-provoking", "engaging", "lighthearted", "creative", "health", "love", "art"];
         const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
-        const prompt = `Generate a random, short, and friendly message that is exactly 10 words long. It should be interesting, funny, or thought-provoking, suitable for all audiences, engaging, lighthearted, and creative. Avoid personal or sensitive topics. Use the theme '${randomWord}' to inspire uniqueness in the response.`;
+        const prompt = `Generate a random, short, and friendly message that is more than 15 characters but less than 100 characters. The message should be engaging, lighthearted, creative, and suitable for all audiences. Avoid personal or sensitive topics. Use the theme '${randomWord}' to inspire uniqueness in the response.`;
 
 
         // Fetch from the Hugging Face Inference API
