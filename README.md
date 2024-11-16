@@ -44,14 +44,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 <h1>Homepage</h1>
-![Screenshot (20)](https://github.com/user-attachments/assets/90275f9e-0c22-43f9-a032-3493e2a24fd1)
+![Screenshot (20)](https://github.com/user-attachments/assets/71cafbbe-1852-4e16-99dd-2b7cba20df76)
+
 
 <h1>Sign-up Page</h1>
 
 >![Screenshot (22)](https://github.com/user-attachments/assets/b474271b-9a73-4627-952b-19eda9d1174c)
 
 <h1>Sign-in Page</h1
-                  ![Screenshot (21)](https://github.com/user-attachments/assets/30288df9-691c-4353-a03e-745424dece74)
+
+![Screenshot (21)](https://github.com/user-attachments/assets/1c0cb9e4-ee03-45c7-9949-be07a0202469)
 
 
 <h1>Verify code Page</h1>
