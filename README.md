@@ -44,7 +44,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 
 <h1>Homepage</h1>
-![Screenshot (20)](https://github.com/user-attachments/assets/b2f289f5-f849-40ff-a4c6-1d843ce0ab86)
+![Screenshot (20)](https://github.com/user-attachments/assets/90275f9e-0c22-43f9-a032-3493e2a24fd1)
 
 <h1>Sign-up Page</h1>
 
@@ -52,6 +52,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 <h1>Sign-in Page</h1
                   ![Screenshot (21)](https://github.com/user-attachments/assets/30288df9-691c-4353-a03e-745424dece74)
+
 
 <h1>Verify code Page</h1>
 
@@ -73,11 +74,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ![Screenshot (27)](https://github.com/user-attachments/assets/dfa88ddb-49b5-4cd5-9f5f-9740ae447898)
 
 =======
+
 todos:
 Add skeleton shadcn component 
 Add forgot password feature
 accept Message not working properly in dashboard page
->>>>>>> 48c080883fd821dbf7b1165371a26d2a47adb4da
+
 
 
 
