@@ -167,7 +167,7 @@ const MessagePage = () => {
             <CardContent className="flex flex-col space-y-3 p-4">
               {suggestedMessages.length === 0 ? (
                 <p className="text-gray-500">
-                  No messages available. Click "Suggest Messages" to get ideas.
+                  No messages available. Click {"Suggest Messages"} to get ideas.
                 </p>
               ) : (
                 suggestedMessages.map((message, index) => (
