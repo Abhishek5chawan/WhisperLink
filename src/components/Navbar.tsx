@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <nav className="container mx-auto flex justify-between items-center p-4 bg-gradient-to-br from-purple-400 to-indigo-600 text-white shadow-md">
             <div className="flex items-center">
-                <a className="text-xl font-bold hover:text-blue-200 transition-all" href="http://localhost:3000/">
+                <a className="text-xl font-bold hover:text-blue-200 transition-all" href="https://mystery-fw0usqmqg-abhishek-cs-projects.vercel.app/">
                     Mystery Message
                 </a>
             </div>
