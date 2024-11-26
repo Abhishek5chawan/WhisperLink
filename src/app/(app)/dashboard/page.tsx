@@ -116,6 +116,7 @@ function UserDashboard() {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(profileUrl);
+    alert('Profile URL has been copied to clipboard. Go to new tab and paste the link. To send messages using AI');
     toast({
       title: 'URL Copied!',
       description: 'Profile URL has been copied to clipboard.',
@@ -136,7 +137,7 @@ function UserDashboard() {
               disabled
               className="flex-grow p-2 text-gray-700 bg-gray-100 border border-gray-300 rounded-md focus:outline-none"
             />
-            <Button onClick={copyToClipboard} className="px-4 py-2 bg-indigo-500 text-white rounded-md shadow hover:bg-indigo-400">
+            <Button onClick={copyToClipboard} className="px-4 py-2 bg-indigo-500 text-white rounded-md shadow hover:bg-green-600">
               Copy
             </Button>
           </div>
