@@ -1,4 +1,4 @@
-# MysteryMsg
+# WhisperLink
 
 MysteryMsg is a platform that allows users to send anonymous messages to one another. It leverages the power of AI integration using HuggingFace's GPT-3 for enhanced messaging features. Built entirely on the **Next.js** framework, this project provides a seamless and modern user experience.
 
